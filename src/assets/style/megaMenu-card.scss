@@ -1,5 +1,35 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+// * {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: border-box;
+//   }
+.menu-list {
+  background-color: #ffff;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0.6rem  auto;
+  width: 98%;
+  min-height: 126px;
+  .card{
+
+  img {
+    padding: 12px;
+    width: 84%;
+    max-height: 100%;
+    // margin: 0 0 12px;
   }
+  .card-content{
+    
+    h2{
+      font-family: inter_semi_bold,fallback-inter_semi_bold,Arial,sans-serif;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    }
+  }
+}
+}
