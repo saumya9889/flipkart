@@ -21,7 +21,9 @@
     // margin: 0 0 12px;
   }
   .card-content{
-    
+    display: flex; 
+    align-items: center;
+    gap: .5rem;
     h2{
       font-family: inter_semi_bold,fallback-inter_semi_bold,Arial,sans-serif;
     font-size: 14px;
@@ -32,4 +34,26 @@
     }
   }
 }
+}
+
+
+.dropdown-wrapper {   
+  position: relative;
+  &:hover{
+    cursor: pointer;
+    .Grocery-Open{
+      display: block;
+    }
+  }
+  
+}
+
+.card{
+  .Grocery-Open{
+    display: none;
+    position: absolute;
+    top: 1rem;
+    background: #eee;
+    padding: 1rem;
+  }
 }

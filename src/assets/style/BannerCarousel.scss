@@ -1,0 +1,20 @@
+.carousel-control-next{
+    background: #fff ;
+     width: max-content;
+     height: max-content;
+     top: 50% !important;
+
+     .carousel-control-next-icon{
+       filter: invert(1) brightness(0.5) !important;
+     }
+}
+.carousel-control-prev{
+    background: #fff ;
+     width: max-content;
+     height: max-content;
+     top: 50% !important;
+
+     .carousel-control-prev-icon{
+       filter: invert(1) brightness(0.5) !important;
+     }
+}
