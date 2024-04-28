@@ -1,19 +1,12 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  //   background-color: rgb(215, 215, 204);
-}
 
-.container {
-  width: 90%;
-  margin: 0 auto;
-  .bar {
+ header{
+  background-color: white;
+  .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    padding: 12px 28px;
+    width: 102%;
+    padding: 9px 2px;
     .left-side {
       background-color: white;
       display: flex;
@@ -24,26 +17,26 @@
       width: 50%;
       margin-top: 0.4rem;
       img {
-        width: 100px;
+        width: 70px;
         // background-color: red;
         filter: invert(1);
       }
       .search {
         font-size: 2rem;
-        width: 76%;
+        width: 85%;
 
         b {
           border-top-left-radius: 5px;
-          border-bottom-left-radius: 5px;
-          padding: 0.1rem 0.3rem;
-          background: #f0f5ff;
-          display: inline-block;
-          cursor: pointer;
-          height: 40px;
-          position: absolute;
-          left: 174px;
-          margin-top: 0.3rem;
-          width: 42px;
+    border-bottom-left-radius: 5px;
+    padding: 0.1rem 0.3rem;
+    background: #f0f5ff;
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 0.1rem;
+    width: 42px;
+    left: 103px;
+    height: 40px;
 
           svg.svg-inline--fa.fa-magnifying-glass {
             color: #706c6c;

@@ -1,2 +1,18 @@
 @import "./Navbar.scss";
 @import "./megaMenu-card.scss";
+@import "./reset.scss";
+@import "./BannerCarousel.scss";
+@import "./Mobilecategory.scss";
+
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+*{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+body{
+    background-color: #eee !important;
+}

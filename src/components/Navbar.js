@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <header>
       <div className="container">
-        <nav className="bar">
+        <nav className="navbar">
           <div className="left-side">
           <div className="logo">
             <img src={flipkartlogo} alt="logo" />
