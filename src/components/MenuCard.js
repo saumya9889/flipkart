@@ -1,79 +1,92 @@
 import React, { useState } from "react";
 
-const MenuCard = ({ title, image, icon, description, megaMenuData }) => {
+const MenuCard = ({ title, image, icon, description, megaMenuData, ElectronicData, subGroceryData }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [istoggleDropdown, setIstoggleDropdown]=useState("");
+  const [istoggleSubDropdown, setIstoggleSubDropdown]=useState(false);
+  
 
-  const toggleDropdown = () => {
+  const toggleDropdown = (e) => {
     setIsDropdownOpen(!isDropdownOpen);
+    setIstoggleDropdown(e)
   };
- console.log(title, "hbsdcd")
+  const handleSubMenu=(e)=>{
+    // setSubMenu(e)
+    if(e === "Soups"){
+      setIstoggleSubDropdown(!istoggleSubDropdown)
+    }
+    
+  }
+ 
+ const menuData=istoggleDropdown==="Grocery"?megaMenuData:istoggleDropdown==="Electronics"?ElectronicData:[];
+
   return (
-    <div className={`card ${icon ? "dropdown-wrapper" : ""}`}>
-      <figure className="max-w-[max-content] rounded overflow-hidden shadow-lg">
+    <div className={`card ${isDropdownOpen ? "open" : ""}` } style={{border:"none"}}>
+      <div className="image-container m-auto">
         <img className="image" src={image} alt={title} />
-      </figure>
-      <div className="card-content border-none" onClick={toggleDropdown}>
+      </div>
+      <div
+        id="multi-dropdown"
+        className={`z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 ${
+          isDropdownOpen ? "block" : "hidden"
+        }`}
+        style={{
+          position: "absolute",
+          top: "calc(100% + 10px)",
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 999,
+        }}
+      >
+        <ul className="py-2 px-0 text-sm text-gray-700 dark:text-gray-200">
+          {menuData?.map((item, index) => (
+            <li key={index} className="w-full hover:bg-[#9ca2ad63] transition-all hover:transition-all flex items-center flex-1">
+              <a
+                href="#"
+                className="block px-4 py-2  text-black no-underline transition-all hover:transition-all hover:text-white hover:font-bold  text-[14px] dark:hover:bg-gray dark:hover:text-white"
+              >
+                {item.title}
+              </a>
+              <span className="  text-[10px]  text-black" onClick={(e)=>handleSubMenu(item?.title)}>{item?.icon}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div
+        id="sub-dropdown"
+        className={`z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 ${
+          istoggleSubDropdown? "block" : "hidden"
+        }`}
+        style={{
+          position: "absolute",
+          top: "calc(100% + 10px)",
+          left: "240px",
+          transform: "translateX(-50%)",
+          zIndex: 999,
+        }}
+      >
+        <ul className="py-2 px-0 text-sm text-gray-700  dark:text-gray-200">
+          {subGroceryData?.map((item, index) => (
+            <li key={index} className="w-full hover:bg-[#9ca2ad63] transition-all hover:transition-all">
+              <a
+                href="#"
+                className="block px-4 py-2  text-black no-underline transition-all hover:transition-all hover:text-white hover:font-bold  text-[14px] dark:hover:bg-gray dark:hover:text-white"
+              >
+                {item.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="card-content border-none" onClick={(e)=>toggleDropdown(title)} >
         <h2 className="title" style={{ fontSize: ".8rem", width: "100%" }}>
           {title}
         </h2>
-        <span>{icon}</span>
+        <span className="dropdown-icon" >
+          {icon}
+        </span>
         <p>{description}</p>
       </div>
-      {/* {isDropdownOpen && ( */}
-      <div className={`dropdown-list flex flex-1 ${
-            title == "Grocery" ? "Grocery-Open" : "Grocery-Open"
-          }`} >
-        <ul
-          // className={`dropdown-list ${
-          //   title === "Grocery" ? "Grocery-Open" : ""
-          // }`}
-          style={{
-            position: "fixed",
-            top: "58%",
-            left: "20%",
-            transform: "translate(-50%, -50%)",
-            height: "50%",
-            width: "max-content",
-            zIndex: 999,
-            backgroundColor: "white",
-            padding: "1rem",
-            borderRadius: "8px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-          }}
-        >
-          {megaMenuData.map((item, index) => (
-            <li>{item.title}</li>
-          ))}
-        </ul>
-        <div
-          className={`mega-menu ${isDropdownOpen ? "open" : ""}`}
-          style={{
-            position: "fixed",
-            top: "54%",
-            left: "50%",
-            zIndex: 999,
-            backgroundColor: "white",
-          }}
-        >
-          {/* <div className="mega-menu-column">
-              <h3>Category 1</h3>
-              <ul>
-                <li>Mega Menu Item 1</li>
-                <li>Mega Menu Item 2</li>
-                <li>Mega Menu Item 3</li>
-              </ul>
-              <h3>Category 1</h3>
-              <ul>
-                <li>Mega Menu Item 1</li>
-                <li>Mega Menu Item 2</li>
-                <li>Mega Menu Item 3</li>
-              </ul>
-            </div> */}
-        </div>
-      </div>
-      {/* )} */}
     </div>
   );
 };

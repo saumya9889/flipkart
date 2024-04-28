@@ -1,7 +1,7 @@
 import React from "react";
 
-export const MobileCategoryCard = (props) => {
-  const { title, image, description } = props;
+ export const CategoryCard = ({ title, image, description }) => {
+ 
 
   return (
     <div className="mobile-card-content w-400  text-black left-4 pt-8 pl-8 pr-4">

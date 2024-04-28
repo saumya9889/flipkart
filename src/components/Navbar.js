@@ -10,10 +10,6 @@ const Navbar = () => {
           <div className="logo">
             <img src={flipkartlogo} alt="logo" />
             </div>
-            {/* <div className="explore-pluss">
-              <span> Explore</span>
-              <span>Plus</span>
-            </div> */}
             <span className="search">
               <b>
                 <i class="fas fa-search"></i>
