@@ -5,23 +5,24 @@ const Navbar = () => {
   return (
     <header>
       <div className="container">
-        <nav className="navbar">
+        <nav className="navbar flex items-center justify-between">
           <div className="left-side">
           <div className="logo">
             <img src={flipkartlogo} alt="logo" />
             </div>
-            <span className="search">
+            <span className="search  ">
               <b>
                 <i class="fas fa-search"></i>
               </b>
               <input
+              // className="md:pl-[33px!important]"
                 type="text"
                 placeholder="Search for Products, Brands and More"
               />
             </span>
           </div>
           <div className="right-side">
-           <div className="shop">
+           <div className="shop md:w-[110px]">
            <i class="fa-solid fa-store"></i>
            <button className="seller"><a href="/becomeaseller">Become a seller</a></button>
            </div>
