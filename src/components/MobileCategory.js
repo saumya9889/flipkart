@@ -20,7 +20,7 @@ const responsive = {
 
 const mobileData = [
     { image: Motorola, title: "Motorola Pro Max", description: "incl of offers" },
-    { image: Motorola5g, title: "Motorola 5g Pro Max" },
+    { image: Motorola5g, title: "Motorola 5g Pro Max", description: "incl of offers" },
     { image: Oneplus, title: "Oneplus CE2", description: "incl of offers"},
     { image: Xiaomi, title: "Xiaomi x2", description: "incl of offers"},
     { image: Samsung, title: "Samsung M30", description: "incl of offers"},

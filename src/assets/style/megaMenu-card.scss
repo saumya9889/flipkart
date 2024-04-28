@@ -1,8 +1,4 @@
-// * {
-//     margin: 0;
-//     padding: 0;
-//     box-sizing: border-box;
-//   }
+
 .menu-list {
   background-color: #ffff;
   display: flex;
@@ -31,6 +27,10 @@
     align-items: center;
     justify-content: center;
     font-weight: 600;
+    }
+    span{
+      margin-bottom: 9px;
+      font-size: 12px;
     }
   }
 }
