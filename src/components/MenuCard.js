@@ -1,3 +1,6 @@
+
+
+
 import React, { useState } from "react";
 
 const MenuCard = ({
@@ -8,6 +11,11 @@ const MenuCard = ({
   megaMenuData,
   ElectronicData,
   subGroceryData,
+  TravelData,
+  HomeData,
+  subHomeData,
+  homeFurnishingData,
+  FurnitureData,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [istoggleDropdown, setIstoggleDropdown] = useState("");
@@ -17,6 +25,7 @@ const MenuCard = ({
     setIsDropdownOpen(!isDropdownOpen);
     setIstoggleDropdown(e);
   };
+  
   const handleSubMenu = (e) => {
     if (e === "Soups") {
       setIstoggleSubDropdown(!istoggleSubDropdown);
@@ -28,6 +37,10 @@ const MenuCard = ({
       ? megaMenuData
       : istoggleDropdown === "Electronics"
       ? ElectronicData
+      : istoggleDropdown === "Travel"
+      ? TravelData
+      : istoggleDropdown === "Home & Furniture"
+      ? HomeData
       : [];
 
   return (
@@ -117,3 +130,4 @@ const MenuCard = ({
 };
 
 export default MenuCard;
+
