@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from "react";
 
 const MenuCard = ({
@@ -13,21 +10,24 @@ const MenuCard = ({
   subGroceryData,
   TravelData,
   HomeData,
-  subHomeData,
   homeFurnishingData,
-  FurnitureData,
+  RoomFurnitureData,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [istoggleDropdown, setIstoggleDropdown] = useState("");
   const [istoggleSubDropdown, setIstoggleSubDropdown] = useState(false);
+  const [subMenuTitle, setSubMenuTitle] = useState("");
 
   const toggleDropdown = (e) => {
     setIsDropdownOpen(!isDropdownOpen);
     setIstoggleDropdown(e);
   };
-  
+
   const handleSubMenu = (e) => {
-    if (e === "Soups") {
+    setSubMenuTitle(e);
+    if (e === "Soaps") {
+      setIstoggleSubDropdown(!istoggleSubDropdown);
+    } else if (e === "Home Furnishing") {
       setIstoggleSubDropdown(!istoggleSubDropdown);
     }
   };
@@ -41,6 +41,15 @@ const MenuCard = ({
       ? TravelData
       : istoggleDropdown === "Home & Furniture"
       ? HomeData
+      : [];
+
+  const subMenuData =
+    subMenuTitle === "Home Furnishing"
+      ? homeFurnishingData
+      : subMenuTitle === "Room Furniture"
+      ? RoomFurnitureData
+      : subMenuTitle === "Soaps"
+      ? subGroceryData
       : [];
 
   return (
@@ -100,7 +109,7 @@ const MenuCard = ({
         }}
       >
         <ul className="py-2 px-0 text-sm text-gray-700  dark:text-gray-200">
-          {subGroceryData?.map((item, index) => (
+          {subMenuData?.map((item, index) => (
             <li
               key={index}
               className="w-full hover:bg-[#9ca2ad63] transition-all hover:transition-all"
@@ -130,4 +139,5 @@ const MenuCard = ({
 };
 
 export default MenuCard;
+
 

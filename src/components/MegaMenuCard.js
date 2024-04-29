@@ -1,4 +1,3 @@
-
 import React from "react";
 import MenuCard from "../components/MenuCard";
 import Grocery from "../assets/images/grocery.png";
@@ -24,10 +23,11 @@ const menuData = [
     title: "Electronics",
     icon: <i className="fa-solid fa-chevron-down"></i>,
   },
-  { image: Homes,
+  {
+    image: Homes,
     title: "Home & Furniture",
     icon: <i className="fa-solid fa-chevron-down"></i>,
-     },
+  },
 
   { image: Appliances, title: "Appliances" },
   {
@@ -37,82 +37,75 @@ const menuData = [
   },
   { image: Toys, title: "beauty Toys & More" },
   { image: Wheelers, title: "Two Wheelers" },
-  
 ];
 
 const megaMenuData = [
-  { title: "Soups" , icon: <i className="fa-solid fa-chevron-right"></i>},
+  { title: "Soaps", icon: <i className="fa-solid fa-chevron-right"></i> },
   { title: "Fuits" },
   { title: "Kitechen Things" },
   { title: "Household Things" },
   { title: "Washroom Things" },
 ];
 const megaMenuElectronicData = [
-{ title: "Phones" },
-{ title: "Head Phone" },
-{ title: "Tv's" },
-{ title: "Washing machines" },
-{ title: "Refrigerator" },
+  { title: "Phones" },
+  { title: "Head Phone" },
+  { title: "Tv's" },
+  { title: "Washing machines" },
+  { title: "Refrigerator" },
 ];
 const subGroceryData = [
-{ title: "Tide" },
-{ title: "Surf Excel" },
-{ title: "Dettol" },
-{ title: "Pears" },
-{ title: "LifeBuoy" },
+  { title: "Tide" },
+  { title: "Surf Excel" },
+  { title: "Dettol" },
+  { title: "Pears" },
+  { title: "LifeBuoy" },
 ];
 
-const TravelData= [
-  { title: "Train" },
-  { title: "Flights" },
-  { title: "Bus" }, 
-  ];
+const TravelData = [{ title: "Train" }, { title: "Flights" }, { title: "Bus" }];
 
-  const HomeData=[
-    {title:"Home Furnishing"},
-    {title:"Furniture Studio"},
-    { title: "Furniture" },
-    { title: "Home Decor" },
-    { title: "Home Appliances" },
-    { title: "Garden Tools" },
-    { title: "Kitchen Tools" },
-    { title: "Tools & Home Improvement" },
-    { title: " Kids Furniture" },
-  ]
+const HomeData = [
+  {
+    title: "Home Furnishing",
+    icon: <i className="fa-solid fa-chevron-right"></i>,
+  },
+  { title: "Furniture Studio" },
+  {
+    title: "Room Furniture",
+    icon: <i className="fa-solid fa-chevron-right"></i>,
+  },
+  { title: "Home Decor" },
+  { title: "Home Appliances" },
+  { title: "Garden Tools" },
+  { title: "Kitchen Tools" },
+  { title: "Tools & Home Improvement" },
+  { title: " Kids Furniture" },
+];
 
-   const subHomeData=	[
-    {title:"Home Furnishing", icon: <i className="fa-solid fa-chevron-right"></i>},
-    {title:"Furniture Studio"},
-    { title: "Furniture" ,icon: <i className="fa-solid fa-chevron-right"></i>},
-    { title: "Home Decor" },
-    { title: "Home Appliances" },
-    { title: "Garden Tools" },
-    { title: "Kitchen Tools" },
-    { title: "Tools & Home Improvement" },
-    { title: " Kids Furniture" },
-    { title: "Bedding & Furnishing" },
-    { title: "Lighting" },
-    { title: "Decorative Access ories" },
-   ]
+const subFurnishingData = [
+  { title: "Bedding & Furnishing" },
+  { title: "Lighting" },
+  { title: "Decorative Access ories" },
+  { title: "Rugs and Mats" },
+  { title: "Carpets" },
+  { title: "Blankets" },
+  { title: "Floor Coverings" },
+  { title: "Cover Protector" },
+  { title: "Bedsheets" },
+];
 
-   const homeFurnishingData=	[
-    {title:"Bedding & Furnishing"},
-    {title:"Lighting"},
-    { title: "Decorative Access ories" },
-   ]
-   const FurnitureData=	[
-    {title:"Furniture Studio"},
-    { title: "Furniture" },
-    { title: "Home Decor" },
-    { title: "Home Appliances" },
-    { title: "Garden Tools" },
-    { title: "Kitchen Tools" },
-    { title: "Tools & Home Improvement" },
-    { title: " Kids Furniture" },
-    { title: "Bedding & Furnishing" },
-    { title: "Lighting" },
-    { title: "Decorative Access ories" },
-   ]
+const subRoomFurnitureData = [
+  { title: "Furniture Studio" },
+  { title: "Furniture" },
+  { title: "Home Decor" },
+  { title: "Home Appliances" },
+  { title: "Garden Tools" },
+  { title: "Kitchen Tools" },
+  { title: "Tools & Home Improvement" },
+  { title: " Kids Furniture" },
+  { title: "Bedding & Furnishing" },
+  { title: "Lighting" },
+  { title: "Decorative Access ories" },
+];
 
 const MegaMenuCard = () => {
   return (
@@ -129,9 +122,8 @@ const MegaMenuCard = () => {
             subGroceryData={subGroceryData}
             TravelData={TravelData}
             HomeData={HomeData}
-            subHomeData={subHomeData}
-            homeFurnishingData={homeFurnishingData}
-            FurnitureData={FurnitureData}
+            homeFurnishingData={subFurnishingData}
+            RoomFurnitureData={subRoomFurnitureData}
           />
         ))}
       </div>
