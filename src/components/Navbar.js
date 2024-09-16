@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import flipkartlogo from "../assets/images/flipkartlogo.png";
+import CustomDrawer from "../components/BaseComponents/Drawer";
 
 const Navbar = () => {
   const [ishandleHamburgerMenu, setIshandleHamburgerMenu] = React.useState(false);
@@ -7,7 +8,16 @@ const Navbar = () => {
     setIshandleHamburgerMenu(!ishandleHamburgerMenu);
     
   }
+  const [open, setOpen] = useState(false);
 
+  const handleDrawer = ()  => {
+    setOpen(true);
+  }; 
+
+  const handleCloseDrawer = ()  => {
+    setOpen(false);
+  }; 
+  
   return (
     <header>
       <div className="container">
@@ -44,7 +54,9 @@ const Navbar = () => {
            </div>
            <div className="carts">
            <i class="fa-solid fa-cart-shopping"></i>
-           <button className="cart"><a href="/cart">cart</a></button>
+           <button className="cart"   onClick={handleDrawer}>cart </button>
+           <CustomDrawer  open={open}  onClose = {handleCloseDrawer}/>
+
            </div>
            <div className="dropdowns">
            <i class="fa-solid fa-ellipsis-vertical"></i>

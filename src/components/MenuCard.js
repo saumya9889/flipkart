@@ -131,7 +131,13 @@ const MenuCard = ({
         <h2 className="title" style={{ fontSize: ".8rem", width: "100%" }}>
           {title}
         </h2>
-        <span className="dropdown-icon">{icon}</span>
+        <span
+          className={`dropdown-icon transform transition-transform duration-300 ${
+            isDropdownOpen ? "rotate-180" : ""
+          }`}
+        >
+          {icon}
+        </span>
         <p>{description}</p>
       </div>
     </div>
@@ -139,5 +145,3 @@ const MenuCard = ({
 };
 
 export default MenuCard;
-
-
