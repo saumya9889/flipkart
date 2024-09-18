@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import flipkartlogo from "../assets/images/flipkartlogo.png";
 import CustomDrawer from "../components/BaseComponents/Drawer";
 
-const Navbar = () => {
+const Navbar = ( ) => {
+ const [itemData,setItemData]= useState()
+  useEffect (()=>{
+    const retrieveData = localStorage.getItem("cartData");
+    setItemData(retrieveData)
+    console.log(retrieveData,"retej")
+
+  },[])
+  
   const [ishandleHamburgerMenu, setIshandleHamburgerMenu] = React.useState(false);
   const handleHamburgerMenu = () => {
-    setIshandleHamburgerMenu(!ishandleHamburgerMenu);
-    
+    setIshandleHamburgerMenu(!ishandleHamburgerMenu); 
   }
   const [open, setOpen] = useState(false);
 
@@ -53,11 +60,16 @@ const Navbar = () => {
            <button className="signin"><a href="/signin">Sign in</a></button>
            </div>
            <div className="carts">
-           <i class="fa-solid fa-cart-shopping"></i>
-           <button className="cart"   onClick={handleDrawer}>cart </button>
-           <CustomDrawer  open={open}  onClose = {handleCloseDrawer}/>
+  <div className="cart-icon-container">
+    <i className="fa-solid fa-cart-shopping"></i>
+    <span className="carts-count">{itemData?.length}</span>
+  </div>
+  <button className="cart" onClick={handleDrawer}>
+    Cart
+  </button>
+  <CustomDrawer open={open} onClose={handleCloseDrawer} />
+</div>
 
-           </div>
            <div className="dropdowns">
            <i class="fa-solid fa-ellipsis-vertical"></i>
            <button className="dropdown"><a href="/dropdown"> </a></button>
@@ -66,6 +78,7 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
+      
     </header>
   );
 };

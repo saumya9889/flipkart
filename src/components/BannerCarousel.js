@@ -10,7 +10,7 @@ import Tv from "../assets/images/tv.png";
 
 const BannerCarousel = () => {
   const handleSlide = (e) => {
-    console.log(e,"e_++++++")
+    // console.log(e,"e_++++++")
   }
   return (
     <Carousel onSlide={handleSlide}>

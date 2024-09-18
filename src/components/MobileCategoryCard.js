@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export const MobileCategoryCard = (props) => {
-  const { title, image, description } = props;
+  const { title, image, description, handleAddToCart ,price} = props;
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -32,6 +32,8 @@ export const MobileCategoryCard = (props) => {
             {title}
           </h2>
           <p className="pl-[5rem]">{description}</p>
+          <h3 className="pl-[5rem] text-base">{price}</h3>
+          <button  className="pl-[5rem] bg-orange-300 rounded-md w-18 h-8 " onClick={()=>handleAddToCart(props)}>Add To Cart</button>
         </figcaption>
       </div>
     </div>

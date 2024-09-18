@@ -139,12 +139,29 @@ header {
       justify-content: center;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 10px;
+      .cart-icon-container {
+        position: relative;
+      }
 
+      .carts-count {
+        position: absolute;
+        top: -20px;
+        right: -2px;
+        background-color: #c32323;
+        color: white;
+        border-radius: 50%;
+        padding: 2px 2px;
+        font-size: 12px;
+        font-weight: bold;
+        min-width: 11px;
+        min-height: 26px;
+        line-height: 22px;
+        text-align: center;
+      }
       .fa-cart-shopping {
         font-size: 1.4rem;
         color: #4b4848;
       }
-
       .cart {
         font-size: 1rem;
         background: white;
@@ -152,7 +169,6 @@ header {
         // left: 357px;
         border: none;
         margin: 0 2rem;
-
         a {
           text-decoration: none;
           color: #000;
