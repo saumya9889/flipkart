@@ -1,89 +1,84 @@
-// import React, { useEffect, useState } from 'react';
-// import Box from '@mui/material/Box';
-// import Drawer from '@mui/material/Drawer'; 
-// import List from '@mui/material/List';
-// import Divider from '@mui/material/Divider';
-// import ListItem from '@mui/material/ListItem';
-// import ListItemButton from '@mui/material/ListItemButton';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-// import ListItemText from '@mui/material/ListItemText';
-// import InboxIcon from '@mui/icons-material/MoveToInbox';
-// import MailIcon from '@mui/icons-material/Mail';
+import React, { useState, useEffect , useContext } from "react";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import { AppContext } from "../AppContext";
 
-// export default function CustomDrawer({open, onClose, cartData}) { 
-// const [data,setData] = useState();
-// useEffect (()=>{
-//   const drawerData = localStorage.getItem("cartData");
-//   setData(drawerData)
-
-// },[])
-
-
-//   const DrawerList = (
-//     <Box sx={{ width: 250 }} role="presentation" >
-//     <h2>Your Cart</h2>
-//       <List>
-//       </List>
-//       <ListItem>No items in cart</ListItem>
-//     </Box>
-//   );
-  
-  
-// return (
-//   <>
-//     <Drawer open={open} onClose={onClose} anchor='right'>
-//       {DrawerList}
-//     </Drawer>
-//   </>
-// );
-// }
-
-
-
-import React, { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer'; 
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-
-export default function CustomDrawer({ open, onClose, cartData = [] }) {  // Initialize cartData as an empty array
-  const [data, setData] = useState([]);
-
-  // Sync cartData with localStorage and state when cartData changes
+export default function CustomDrawer({ open, onClose, cartData = [] }) {
+  const [quantities, setQuantities] = useState([]);
+  const { state, setState } = useContext(AppContext);
+  console.log(state,"state++")
+  // Initialize quantities based on the cartData length
   useEffect(() => {
-    if (cartData && cartData.length > 0) {  // Check if cartData exists and has items
-      localStorage.setItem("cartData", JSON.stringify(cartData));
-      setData(cartData);  // Update state with the latest cartData
-    } else {
-      const drawerData = localStorage.getItem("cartData");
-      if (drawerData) {
-        setData(JSON.parse(drawerData));  // Load from localStorage if available
-      }
-    }
+    setQuantities(cartData.map(() => 1)); // Initialize all quantities to 1
   }, [cartData]);
 
-  // Drawer list to display cart items
+  const increaseQuantity = (index) => {
+    console.log(index,"index++")
+    const newQuantities = [...quantities]; // Array iterate
+    newQuantities[index] = newQuantities[index] + 1;
+    setQuantities(newQuantities);
+  };
+
+  const decreaseQuantity = (index) => {
+    const newQuantities = [...quantities];
+    if (newQuantities[index] > 1) {
+      newQuantities[index] = newQuantities[index] - 1; // bs minus huaa hai 
+    }
+    setQuantities(newQuantities);
+  };
+
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation">
+    <Box sx={{ width: 323 }} role="presentation">
       <h2>Your Cart</h2>
       <List>
-        {data && data.length > 0 ? (
-          data.map((item, index) => (
-            <ListItem key={index}>
-              <ListItemText primary={item.name} secondary={`Quantity: ${item.quantity}`} />
-            </ListItem>
-          ))
-        ) : (
-          <ListItem>No items in cart</ListItem>
-        )}
+        {state?.map((item, index) => (
+          <ListItem key={index}>
+            <div className="flex flex-row items-center justify-center gap-7">
+              <img
+                src={item.image}
+                alt="img"
+                className="img w-[70px] h-[75px]"
+              />
+              <div className="flex flex-col">
+                <ListItemText
+                  primary={item.title}
+                  secondary={`${item.price}`}
+                />
+                <div className="flex items-center gap-2">
+                  <button
+                    className="px-2 py-1 bg-gray-300 text-black rounded hover:bg-gray-400"
+                    onClick={() => decreaseQuantity(index)}
+                  >
+                    -
+                  </button>
+                  <span>{quantities[index]}</span>
+                  <button
+                    className="px-2 py-1 bg-gray-300 text-black rounded hover:bg-gray-400"
+                    onClick={() => increaseQuantity(index)}
+                  >
+                    +
+                  </button>
+                  <span
+                    className="px-2 py-1 bg-gray-300 text-black rounded hover:bg-gray-400"
+                    onClick={() => setState("Context API Updated!")}>
+                  
+                    context
+                  </span>
+                </div>
+              </div>
+            </div>
+          </ListItem>
+        ))}
       </List>
     </Box>
   );
-  
+
   return (
     <>
-      <Drawer open={open} onClose={onClose} anchor='right'>
+      <Drawer open={open} onClose={onClose} anchor="right">
         {DrawerList}
       </Drawer>
     </>

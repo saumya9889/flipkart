@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { MobileCategoryCard } from "./MobileCategoryCard";
 import Motorola5g from "../assets/images/mobileImage/motorola5g.jpg";
 import Motorola from "../assets/images/mobileImage/motorola.jpg";
@@ -10,6 +10,7 @@ import SamsungGalaxy from "../assets/images/mobileImage/samsung-galaxy.jpg";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CustomDrawer from "./BaseComponents/Drawer";
+import { AppContext } from "./AppContext";
 
 const responsive = {
   superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 5 },
@@ -66,9 +67,10 @@ const mobileData = [
 
 export const MobileCategory = () => {
   const [cartData, setCartData] = useState([]);
+  const { setState } = useContext(AppContext);
   const handleAddToCart = (item) => {
-    setCartData((prevCart) => [...prevCart, item]);
-    localStorage.setItem("cartData", JSON.stringify(cartData));
+    setState((prevCart) => [...prevCart, item]);
+    // localStorage.setItem("cartData", JSON.stringify(cartData));
   };
 
   // console.log(cartData.length, "jbsx");
