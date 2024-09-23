@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import flipkartlogo from "../assets/images/flipkartlogo.png";
 import CustomDrawer from "../components/BaseComponents/Drawer";
+import { AppContext } from "../components/AppContext";
 
 const Navbar = () => {
-  const [itemData, setItemData] = useState();
-  useEffect(() => {
-    const retrieveData = localStorage.getItem("cartData");
-    if (retrieveData) {
-      setItemData(JSON.parse(retrieveData)); // Parse the string into an array
-    }
-  }, []);
-
+  const { state } = useContext(AppContext);
   const [ishandleHamburgerMenu, setIshandleHamburgerMenu] =
     React.useState(false);
   const handleHamburgerMenu = () => {
@@ -77,7 +71,7 @@ const Navbar = () => {
               <div className="carts">
                 <div className="cart-icon-container">
                   <i className="fa-solid fa-cart-shopping"></i>
-                  <span className="carts-count">{itemData?.length}</span>
+                  <span className="carts-count">{state?.length || 0}</span>
                 </div>
                 <button className="cart" onClick={handleDrawer}>
                   Cart
@@ -85,7 +79,7 @@ const Navbar = () => {
                 <CustomDrawer
                   open={open}
                   onClose={handleCloseDrawer}
-                  cartData={itemData}
+                  cartData={state}
                 />
               </div>
 

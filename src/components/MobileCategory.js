@@ -67,13 +67,13 @@ const mobileData = [
 
 export const MobileCategory = () => {
   const [cartData, setCartData] = useState([]);
-  const { setState } = useContext(AppContext);
+  const { state,setState } = useContext(AppContext);
   const handleAddToCart = (item) => {
-    setState((prevCart) => [...prevCart, item]);
-    // localStorage.setItem("cartData", JSON.stringify(cartData));
+    console.log(item,"item+++")
+    setState((prev) => [...prev, item]); 
   };
 
-  // console.log(cartData.length, "jbsx");
+  console.log(state,"state+++")
 
   return (
     <div className="mobile-category mt-8 ">

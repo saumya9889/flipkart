@@ -1,22 +1,34 @@
-import React, { useState, useEffect , useContext } from "react";
+import React, { useState, useEffect  } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import { AppContext } from "../AppContext";
 
-export default function CustomDrawer({ open, onClose, cartData = [] }) {
+
+export default function CustomDrawer({ open, onClose, cartData }) {
   const [quantities, setQuantities] = useState([]);
-  const { state, setState } = useContext(AppContext);
-  console.log(state,"state++")
-  // Initialize quantities based on the cartData length
+  
+  // // Initialize quantities based on the cartData length
+  // useEffect(() => {
+  //   setQuantities(cartData.map(() => 1)); // Initialize all quantities to 1
+  // }, [cartData]);
+  
+ const [uniqueCartData, setUniqueCartData] = useState([]);
+
+  // Remove duplicates from cartData and initialize quantities
   useEffect(() => {
-    setQuantities(cartData.map(() => 1)); // Initialize all quantities to 1
+    const uniqueItems = [];
+    cartData.forEach((item) => {
+      if (!uniqueItems.some((obj) => obj.id === item.id)) {
+        uniqueItems.push(item);
+      }
+    });
+    setUniqueCartData(uniqueItems); // Set unique cart data
+    setQuantities(uniqueItems.map(() => 1)); // Initialize quantities for unique items
   }, [cartData]);
 
   const increaseQuantity = (index) => {
-    console.log(index,"index++")
     const newQuantities = [...quantities]; // Array iterate
     newQuantities[index] = newQuantities[index] + 1;
     setQuantities(newQuantities);
@@ -34,7 +46,7 @@ export default function CustomDrawer({ open, onClose, cartData = [] }) {
     <Box sx={{ width: 323 }} role="presentation">
       <h2>Your Cart</h2>
       <List>
-        {state?.map((item, index) => (
+        {uniqueCartData?.map((item, index) => (
           <ListItem key={index}>
             <div className="flex flex-row items-center justify-center gap-7">
               <img
@@ -61,12 +73,6 @@ export default function CustomDrawer({ open, onClose, cartData = [] }) {
                   >
                     +
                   </button>
-                  <span
-                    className="px-2 py-1 bg-gray-300 text-black rounded hover:bg-gray-400"
-                    onClick={() => setState("Context API Updated!")}>
-                  
-                    context
-                  </span>
                 </div>
               </div>
             </div>
@@ -78,7 +84,7 @@ export default function CustomDrawer({ open, onClose, cartData = [] }) {
 
   return (
     <>
-      <Drawer open={open} onClose={onClose} anchor="right">
+      <Drawer open={open} onClose={onClose}  anchor="right">
         {DrawerList}
       </Drawer>
     </>
