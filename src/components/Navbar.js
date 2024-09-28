@@ -1,23 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import flipkartlogo from "../assets/images/flipkartlogo.png";
 import CustomDrawer from "../components/BaseComponents/Drawer";
 import { AppContext } from "../components/AppContext";
 
 const Navbar = () => {
   const { state } = useContext(AppContext);
+  const { handleCartOpen } = useContext(AppContext);
+
   const [ishandleHamburgerMenu, setIshandleHamburgerMenu] =
     React.useState(false);
   const handleHamburgerMenu = () => {
     setIshandleHamburgerMenu(!ishandleHamburgerMenu);
-  };
-  const [open, setOpen] = useState(false);
-
-  const handleDrawer = () => {
-    setOpen(true);
-  };
-
-  const handleCloseDrawer = () => {
-    setOpen(false);
   };
 
   return (
@@ -68,20 +61,15 @@ const Navbar = () => {
                   <a href="/signin">Sign in</a>
                 </button>
               </div>
-              <div className="carts">
-                <div className="cart-icon-container">
-                  <i className="fa-solid fa-cart-shopping"></i>
-                  <span className="carts-count">{state?.length || 0}</span>
-                </div>
-                <button className="cart" onClick={handleDrawer}>
-                  Cart
-                </button>
-                <CustomDrawer
-                  open={open}
-                  onClose={handleCloseDrawer}
-                  cartData={state}
-                />
-              </div>
+              <button className="carts relative" onClick={handleCartOpen}>
+                <i className="fa-solid fa-cart-shopping"></i>
+                <span className=" absolute left-[20px] top-[-20px] bg-red-500 text-white h-[18px] w-[18px] text-xs rounded">
+                  {state?.length || 0}
+                </span>
+                <span className="carts-text">Cart</span>
+              </button>
+
+              <CustomDrawer cartData={state} />
 
               <div className="dropdowns">
                 <i class="fa-solid fa-ellipsis-vertical"></i>

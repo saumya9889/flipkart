@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState , useContext} from "react";
+import { AppContext } from "../components/AppContext";
 
 export const MobileCategoryCard = (props) => {
   const { title, image, description, handleAddToCart ,price} = props;
   const [isHovered, setIsHovered] = useState(false);
+  const { setCartOpen} = useContext(AppContext);
 
   return (
     <div
@@ -33,7 +35,7 @@ export const MobileCategoryCard = (props) => {
           </h2>
           <p className="pl-[5rem]">{description}</p>
           <h3 className="pl-[5rem] text-base">{price}</h3>
-          <button  className="pl-[5rem] bg-orange-300 rounded-md w-18 h-8 " onClick={()=>handleAddToCart(props)}>Add To Cart</button>
+          <button className="pl-[5rem] bg-orange-300 rounded-md w-18 h-8" onClick={() => { handleAddToCart(props); setCartOpen(true);  }}>Add To Cart</button>
         </figcaption>
       </div>
     </div>

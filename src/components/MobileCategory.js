@@ -67,13 +67,13 @@ const mobileData = [
 
 export const MobileCategory = () => {
   const [cartData, setCartData] = useState([]);
-  const { state,setState } = useContext(AppContext);
+  // console.log(cartData, "cart")
+  const { setState } = useContext(AppContext);
+
   const handleAddToCart = (item) => {
-    console.log(item,"item+++")
-    setState((prev) => [...prev, item]); 
+    setState((prev) => [...prev, item]);
   };
 
-  console.log(state,"state+++")
 
   return (
     <div className="mobile-category mt-8 ">
@@ -91,8 +91,7 @@ export const MobileCategory = () => {
           ))}
         </Carousel>
       </div>
-      <CustomDrawer cartData={cartData} />
-
+      {/* <CustomDrawer cartData={cartData} /> */}
     </div>
   );
 };
