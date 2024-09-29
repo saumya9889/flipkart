@@ -66,7 +66,7 @@ const mobileData = [
 ];
 
 export const MobileCategory = () => {
-  const [cartData, setCartData] = useState([]);
+  // const [cartData, setCartData] = useState([]);
   // console.log(cartData, "cart")
   const { setState } = useContext(AppContext);
 
